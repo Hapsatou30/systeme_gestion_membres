@@ -1,6 +1,7 @@
+
 <?php
-//require_once(__DIR__ .'/configue.php');
-require_once(__DIR__.'/CRUD.php');
+
+require_once "CRUD.php";
 //creation de la classe Membre
 class Membre implements CRUD
 {
@@ -118,6 +119,25 @@ class Membre implements CRUD
      //la methode pour afficher les informations des membre
      public function lireMembre()
      {
+        try {
+            //la requette sql
+            $sql="SELECT * FROM membre";
+
+            //preparer la requette
+            $stmt= $this->connexion->prepare($sql);
+
+            //execute la requette 
+            $stmt->execute();
+
+            //recuperation des resultats dans un tableau
+            $resultats = $stmt ->fetchAll(PDO::FETCH_ASSOC);
+
+            return $resultats;
+           
+        } catch (PDOException $e) {
+            //gestion des erreurs
+            die("::ERREUR:: Impossible de d'afficher les détails des membre");
+        }
         
      }
 

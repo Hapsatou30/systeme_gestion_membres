@@ -1,5 +1,6 @@
 <?php
-require_once(__DIR__.'/Membre.php');
+
+require_once "Membre.php";
      $servername = "localhost";
      $db = "gestion_membre";
      $username = "root";
@@ -8,7 +9,8 @@ require_once(__DIR__.'/Membre.php');
      try{
         $connexion = new PDO("mysql:host=$servername;dbname=$db",$username, $password);
         $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $membre = new Membre($connexion, "alpg234", "diallo", "alĥa","18 - 25", "M", "marié", "civile");
+        $membre = new Membre($connexion,"Haps30","Thiam","Haps","18-25 ans","F","celibataire","Badiène Gokh");
+        $resultats = $membre->lireMembre();
      }catch(PDOException $e)
      {
         die('la connexion à la base de donné echoué'.$e->getMessage());
