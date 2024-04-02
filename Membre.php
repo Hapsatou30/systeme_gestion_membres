@@ -1,7 +1,7 @@
 
 <?php
 require_once "CRUD.php";
-//creation de la classe Membre
+//creation de la prenome Membre
 class Membre implements CRUD
 {
     //déclaration des proprietes privées 
@@ -142,11 +142,36 @@ class Membre implements CRUD
      }
 
      
-     //la methode pour modifier les information d'un membre
-     public function modifierMembre()
-     {
+     public function modifierMembre($matricule, $nom, $prenom, $tranche_age, $sexe, $situationMatrimoniale, $statut)
+{
+    try {
+        // Requête SQL de mise à jour avec des paramètres
+        $sql = "UPDATE membre SET nom = :nom, prenom = :prenom, tranche_age = :tranche_age, sexe = :sexe, situation_matrimoniale = :situation_matrimoniale, statut = :statut WHERE matricule = :matricule";
         
-     }
+        // Préparation de la requête
+        $stmt = $this->connexion->prepare($sql);
+        
+        // Liaison des valeurs aux paramètres
+        $stmt->bindParam(':matricule', $matricule, PDO::PARAM_STR);
+        $stmt->bindParam(':nom', $nom, PDO::PARAM_STR);
+        $stmt->bindParam(':prenom', $prenom, PDO::PARAM_STR);
+        $stmt->bindParam(':tranche_age', $tranche_age, PDO::PARAM_STR);
+        $stmt->bindParam(':sexe', $sexe, PDO::PARAM_STR);
+        $stmt->bindParam(':situation_matrimoniale', $situationMatrimoniale, PDO::PARAM_STR);
+        $stmt->bindParam(':statut', $statut, PDO::PARAM_STR);
+        
+        // Exécution de la requête
+        $stmt->execute();
+        
+        // Redirection vers la page index.php après la mise à jour réussie
+        header("Location: affichage.php");
+        exit(); // Assurez-vous d'arrêter l'exécution du script après la redirection
+    } catch(PDOException $e) {
+        // Gestion de l'erreur en la lançant à l'extérieur de la méthode
+        throw new Exception("ERREUR: Impossible de mettre à jour les données de l'étudiant. " . $e->getMessage());
+    }
+}
+
 
    // Méthode pour supprimer un membre
 public function supprimerMembre($matricule) {
