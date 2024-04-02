@@ -1,4 +1,5 @@
 <?php 
+require_once "CRUD.php";
 //creation de la classe Membre
 class Membre implements CRUD
 {
