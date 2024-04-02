@@ -95,10 +95,25 @@ class Membre implements CRUD
 
      //la methode pour ajouter un membre
 
-     public function ajoutMembre()
-     {
-        
-     }
+    //la methode pour ajouter un membre
+    public function ajoutMembre($matricule,$nom,$prenom,$tranche_age,$sexe,$situationMatrimoniale,$statut)
+    {
+        try {
+            // Préparer et exécuter la requête d'insertion
+            $requete = $this->connexion->prepare('INSERT INTO membre(matricule, nom, prenom, tranche_age, sexe, situation_matrimoniale, statut) VALUES (:matricule, :nom, :prenom, :tranche_age, :sexe, :situation_matrimoniale, :statut)');
+            $requete->bindValue(':matricule', $matricule);
+            $requete->bindValue(':nom', $nom);
+            $requete->bindValue(':prenom', $prenom);
+            $requete->bindValue(':tranche_age', $tranche_age);
+            $requete->bindValue(':sexe', $sexe);
+            $requete->bindValue(':situation_matrimoniale', $situationMatrimoniale);
+            $requete->bindValue(':statut', $statut);
+            $requete->execute();
+        } catch(PDOException $e) {
+            // Gérer l'erreur, par exemple, logguer l'erreur
+            echo 'Erreur lors de l\'insertion : '.$e->getMessage();
+        }
+    }
 
      //la methode pour afficher les informations des membre
      public function lireMembre()
