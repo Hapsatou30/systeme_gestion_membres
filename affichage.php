@@ -47,7 +47,7 @@
                             </div>
                             <div class="update_delete">
                                 <div class="update"> 
-                                    <a href="update_billet.php?matricule=<?php echo $membre['matricule']; ?>" class="btn" style="font-size: 28px; color: #3498db ;"><i class="fas fa-edit"></i></a>
+                                    <a href="update.php?matricule=<?php echo $membre['matricule']; ?>" class="btn" style="font-size: 28px; color: #3498db ;"><i class="fas fa-edit"></i></a>
                                 </div>
                                 <div class="delete">
                                     <a href="delete_billet.php?matricule=<?php echo $membre['matricule']; ?>" class="btn" style="font-size: 28px; color: red;"><i class="fas fa-trash-alt"></i></a>
