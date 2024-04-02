@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Iceberg&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Iceberg&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Iceberg&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+.container h2{
+    color: #3498db ;
+    font-size: 50px;
+    font-family: iceberg;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 2%;
+}
+.card {
+    margin-top: 5%;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 400px;
+  
+}
+.membre
+{
+    margin-bottom: 20px;
+}
+.fa-city{
+    color: #ffff;
+}
+
+.card-img-top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    object-fit: cover;
+  
+}
+.card-body{
+    background-color: #34495e ;
+   
+}
+
+.card-title {
+    
+    font-family: iceberg;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #FFFF;
+}
+.card-title img{
+    width: 90px;
+    transition: transform 0.3s ease-in-out; 
+}
+.nom,.sexe,.statut,
+.tranche-age,.situation-matrimoniale
+{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+.nom h6, .tranche-age h6, .sexe h6, .situation-matrimoniale h6, .statut h6  {
+    font-size: 20px;
+    font-family: iceberg;
+    font-weight: bold;
+    color: #ffff; 
+    margin-left: 10px;
+}
+.nom p, .tranche-age p, .sexe p, .situation-matrimoniale p, .statut p{
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.card-text {
+    color: #ffff;
+}
+
+.update,.delete{
+    background-color: #ffff;
+    border-radius: 5px;
+    width: 90px;
+    text-align: center;
+}
+.update{
+    float: left;
+}
+.delete{
+    float: right;
+    
+}
+
+
+
