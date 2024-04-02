@@ -1,4 +1,5 @@
-<?php 
+
+<?php
 require_once "CRUD.php";
 //creation de la prenome Membre
 class Membre implements CRUD
@@ -172,9 +173,16 @@ class Membre implements CRUD
 }
 
 
-     //la methode pour supprimer un membre
-      public function supprimerMembre()
-      {
-        
-      }
+   // Méthode pour supprimer un membre
+public function supprimerMembre($matricule) {
+   try {
+       $requete = $this->connexion->prepare('DELETE FROM membre WHERE matricule = :matricule');
+       $requete->bindValue(':matricule', $matricule);
+       $requete->execute();
+       echo "Le membre avec le matricule $matricule a été supprimé avec succès.";
+   } catch(PDOException $e) {
+       die('Erreur suppression : ' . $e->getMessage());
+   }
+}
+
 }
