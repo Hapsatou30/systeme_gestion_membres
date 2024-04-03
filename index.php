@@ -32,14 +32,16 @@ require_once 'configue.php'; // Inclure le fichier contenant la conf
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div class="header">
+    <h1 style="color: #3498db ;">Ajouter un membre à la Commune de Patte D'oie</h1>
+    </div>
 <a href="affichage.php" style="position: absolute;
      top: 0; right: 0; margin: 20px; display: inline-block;
     text-decoration: none; background-color: #3498db; 
     padding: 10px 20px; border-radius: 20px; color: #ffffff; 
     font-size: 20px;">Voir la liste des membres</a>
-    f
+    
     <div class="container" style="width: 700px;">
-        <h1 style="color: #3498db ;">Ajouter un membre à la Commune de Patte D'oie</h1>
         <div style="text-align: center">
             <form action="index.php" method="post">
                 <div class="form-group">
