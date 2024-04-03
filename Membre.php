@@ -110,6 +110,9 @@ class Membre implements CRUD
             $requete->bindValue(':situation_matrimoniale', $situationMatrimoniale);
             $requete->bindValue(':statut', $statut);
             $requete->execute();
+            // Redirection vers la page index.php après la mise à jour réussie
+        header("Location: affichage.php");
+        exit(); // Assurez-vous d'arrêter l'exécution du script après la redirection
         } catch(PDOException $e) {
             // Gérer l'erreur, par exemple, logguer l'erreur
             echo 'Erreur lors de l\'insertion : '.$e->getMessage();

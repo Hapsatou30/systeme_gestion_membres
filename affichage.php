@@ -7,15 +7,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion_Membres</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="affichage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- Inclure le script Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <body>
+    <a href="index.php" style="margin: 20px; 
+                
+            display: inline-block; 
+            text-decoration: none; 
+            background-color: #3498db;
+            padding: 10px 20px; 
+            border-radius: 20px;
+            color: #ffff;
+            font-size:20px;"
+            >Ajouter un Membre
+        </a>
     <div class="container">
-        <h2>La liste des membres de la commune de Patte D'oie</h2>
+        <h2 style="background-color: #34495e;">La liste des membres de la commune de Patte D'oie</h2>
+        
         <div class="row">
             <?php foreach($resultats as $membre) {?>
                 <div class="col-lg-4"> <!-- Utilisation de col-md-6 pour afficher deux cartes par ligne sur les écrans de taille moyenne et plus grands -->

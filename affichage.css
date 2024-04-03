@@ -10,6 +10,10 @@
     font-weight: bold;
     text-align: center;
     margin-top: 2%;
+    padding: 10px;
+}
+a .btn{
+    
 }
 .card {
     margin-top: 5%;
