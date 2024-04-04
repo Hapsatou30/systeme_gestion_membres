@@ -188,16 +188,16 @@ class Membre implements CRUD
 // }
 
 
-//    // Méthode pour supprimer un membre
-// public function supprimerMembre($matricule) {
-//    try {
-//        $requete = $this->connexion->prepare('DELETE FROM membre WHERE matricule = :matricule');
-//        $requete->bindValue(':matricule', $matricule);
-//        $requete->execute();
-//        echo "Le membre avec le matricule $matricule a été supprimé avec succès.";
-//    } catch(PDOException $e) {
-//        die('Erreur suppression : ' . $e->getMessage());
-//    }
-// }
+   // Méthode pour supprimer un membre
+public function supprimerMembre($matricule) {
+   try {
+       $requete = $this->connexion->prepare('DELETE FROM membre WHERE matricule = :matricule');
+       $requete->bindValue(':matricule', $matricule);
+       $requete->execute();
+       echo "Le membre avec le matricule $matricule a été supprimé avec succès.";
+   } catch(PDOException $e) {
+       die('Erreur suppression : ' . $e->getMessage());
+   }
+}
 
 }
