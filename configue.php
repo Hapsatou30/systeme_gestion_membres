@@ -22,14 +22,17 @@ try {
     $nextMatricule = "PATT" . ($lastMatricule + 1);
 
     // Insérer les données avec le nouveau matricule
-    $membre = new Membre($connexion, "PATT1", "Thiam", "Haps",  "F", "celibataire",  $nextMatricule);
+    $membre = new Membre($connexion, "Haps30", "Thiam", "Haps", "18-25 ans", "F", "celibataire", "Badiène Gokh", $nextMatricule);
       // Appel de la méthode ajoutMembre pour insérer le nouveau membre
-      $membre->ajoutMembre($nextMatricule, "Nom", "Prenom",  "F", "celibataire", );
-  
+      $membre->ajoutMembre($nextMatricule, "Nom", "Prenom", "18-25 ans", "F", "celibataire", "Statut");
+    $membre->lireMembre();
 
     // Lire les membres après insertion
     $resultats = $membre->lireMembre();
 
-} catch (PDOException $e) {
-    die('la connexion à la base de donné echoué' . $e->getMessage());
-}
+
+
+     }catch(PDOException $e)
+     {
+        die('la connexion à la base de donné echoué'.$e->getMessage());
+     }

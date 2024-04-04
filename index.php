@@ -72,9 +72,7 @@ try {
     text-decoration: none; background-color: #3498db; 
     padding: 10px 20px; border-radius: 20px; color: #ffffff; 
     font-size: 20px;">Voir la liste des membres</a>
-<<<<<<<<< Temporary merge branch 1
-=========
-    
+
     <div class="container" style="width: 700px;">
         <div style="text-align: center">
             <form action="index.php" method="post">
@@ -82,15 +80,6 @@ try {
                 <label for="matricule">Matricule:</label>
                 <input type="text" id="matricule" readonly value="<?php echo $nextMatricule; ?>">
                 </div><br>
->>>>>>>>> Temporary merge branch 2
-
-<div class="container" style="width: 700px;">
-    <div style="text-align: center">
-        <form action="index.php" method="post">
-            <div class="form-group">
-                <label for="matricule">Matricule :</label>
-                <input type="text" id="matricule" name="matricule">
-            </div><br>
 
            <div class="form-group">
                <label for="nom">Nom :</label>
@@ -133,7 +122,20 @@ try {
                         <option value="Veuf(ve)">Veuf/Veuve</option>
                     </select>
                 </div><br>
->>>>>>>>> Temporary merge branch 2
+
+            <div class="form-group">
+                <label for="tranche_age">Tranche d'âge :</label>
+                <select id="tranche_age" name="tranche_age">
+                    <?php foreach ($tranche_age as $tranch): ?>
+                        <option
+                            value="<?php echo $tranch['min_age'] . '_' . $tranch['max_age']; ?>"><?php echo $tranch['min_age'] . '-' . $tranch['max_age']; ?></option>
+                    <?php endforeach; ?>
+                </select>
+<<<<<<<<< Temporary merge branch 1
+=========
+            </div>
+
+            <br>
 
             <div class="form-group">
                 <label for="sexe">Sexe :</label>
@@ -141,7 +143,8 @@ try {
                     <option value="homme">M</option>
                     <option value="femme">F</option>
                 </select>
-            </div><br>
+            </div>
+            <br>
 
             <div class="form-group">
                 <label for="situation_matrimoniale">Situation matrimoniale :</label>
@@ -150,6 +153,7 @@ try {
                         <option value="<?php echo $matrimonial; ?>"><?php echo $matrimonial; ?></option>
                     <?php endforeach; ?>
                 </select>
+>>>>>>>>> Temporary merge branch 2
             </div><br>
 
             <div class="form-group">
