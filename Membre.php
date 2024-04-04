@@ -100,15 +100,15 @@ class Membre implements CRUD
     public function ajoutMembre($matricule, $nom, $prenom, $tranche_age, $sexe, $situationMatrimoniale, $statut)
     {
         try {
-            $requete_insertion = "INSERT INTO membre (matricule, nom, prenom, tranche_age, sexe, situation_matrimoniale, statut) VALUES (:matricule, :nom, :prenom, :tranche_age, :sexe, :situation_matrimoniale, :statut)";
+            $requete_insertion = "INSERT INTO membre (matricule, nom, prenom, sexe, situation_matrimoniale) VALUES (:matricule, :nom, :prenom, :sexe, :situation_matrimoniale)";
             $stmt_insertion = $this->connexion->prepare($requete_insertion); // Utilisation de $this->connexion
             $stmt_insertion->bindParam(':matricule', $matricule);
             $stmt_insertion->bindParam(':nom', $nom);
             $stmt_insertion->bindParam(':prenom', $prenom);
-            $stmt_insertion->bindParam(':tranche_age', $tranche_age);
+           // $stmt_insertion->bindParam(':tranche_age', $tranche_age);
             $stmt_insertion->bindParam(':sexe', $sexe);
             $stmt_insertion->bindParam(':situation_matrimoniale', $situationMatrimoniale);
-            $stmt_insertion->bindParam(':statut', $statut);
+            //$stmt_insertion->bindParam(':statut', $statut);
             $stmt_insertion->execute();
             header("Location: affichage.php");
             exit();
