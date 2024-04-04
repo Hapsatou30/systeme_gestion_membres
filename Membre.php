@@ -15,7 +15,7 @@ class Membre implements CRUD
     private $statut;
 
     //la methode construct
-     public function __construct($connexion,$matricule,$nom,$prenom,$tranche_age,$sexe,$situationMatrimoniale,$statut)
+     public function __construct($connexion,$matricule, $nom, $prenom,$sexe, $situationMatrimoniale, $statut, $tranche_age)
      {
         $this->connexion=$connexion;
         $this->matricule=$matricule;
@@ -97,27 +97,26 @@ class Membre implements CRUD
      //la methode pour ajouter un membre
 
     //la methode pour ajouter un membre
-    public function ajoutMembre($matricule,$nom,$prenom,$tranche_age,$sexe,$situationMatrimoniale,$statut)
+    public function ajoutMembre($matricule, $nom, $prenom, $sexe, $situationMatrimoniale, $id_statut, $id_age)
     {
         try {
-            // Préparer et exécuter la requête d'insertion
-            $requete = $this->connexion->prepare('INSERT INTO membre(matricule, nom, prenom, tranche_age, sexe, situation_matrimoniale, statut) VALUES (:matricule, :nom, :prenom, :tranche_age, :sexe, :situation_matrimoniale, :statut)');
-            $requete->bindValue(':matricule', $matricule);
-            $requete->bindValue(':nom', $nom);
-            $requete->bindValue(':prenom', $prenom);
-            $requete->bindValue(':tranche_age', $tranche_age);
-            $requete->bindValue(':sexe', $sexe);
-            $requete->bindValue(':situation_matrimoniale', $situationMatrimoniale);
-            $requete->bindValue(':statut', $statut);
-            $requete->execute();
-            // Redirection vers la page index.php après la mise à jour réussie
-        header("Location: affichage.php");
-        exit(); // Assurez-vous d'arrêter l'exécution du script après la redirection
+            $requete_insertion = "INSERT INTO membre (matricule, nom, prenom, sexe, situation_matrimoniale, id_statut, id_age) VALUES (:matricule, :nom, :prenom, :sexe, :situation_matrimoniale, :id_statut, :id_age)";
+            $stmt_insertion = $this->connexion->prepare($requete_insertion);
+            $stmt_insertion->bindParam(':matricule', $matricule);
+            $stmt_insertion->bindParam(':nom', $nom);
+            $stmt_insertion->bindParam(':prenom', $prenom);
+            $stmt_insertion->bindParam(':sexe', $sexe);
+            $stmt_insertion->bindParam(':situation_matrimoniale', $situationMatrimoniale);
+            $stmt_insertion->bindParam(':id_statut', $id_statut);
+            $stmt_insertion->bindParam(':id_age', $id_age);
+            $stmt_insertion->execute();
+            header("Location: affichage.php");
+            exit();
         } catch(PDOException $e) {
-            // Gérer l'erreur, par exemple, logguer l'erreur
             echo 'Erreur lors de l\'insertion : '.$e->getMessage();
         }
     }
+    
 
      //la methode pour afficher les informations des membre
      public function lireMembre()
