@@ -20,10 +20,15 @@ try {
         // Après avoir récupéré les données du formulaire
         require_once 'CRUD.php'; // Inclure le fichier contenant la classe Membre
         $membre = new Membre($connexion, $matricule, $nom, $prenom, $tranche_age, $sexe, $situation_matrimoniale, $statut);
-        $membre->ajoutMembre($matricule, $nom, $prenom, $sexe, $situationMatrimoniale, $id_statut, $id_age);
+
+        $membre->ajoutMembre($matricule, $nom, $prenom, $tranche_age, $sexe, $situation_matrimoniale, $statut);
     }
 
-   ;
+    //requêtte sql pour afficher situation matrimonial 
+    $requette = "SELECT DISTINCT situation_matrimoniale FROM membre";
+    $stmt = $connexion->query($requette);
+    $situation_matrimoniales = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
 
     // Requête SQL pour récupérer toutes les tranches d'âge
     $query = "SELECT * FROM tranche_age";
@@ -65,6 +70,7 @@ try {
     padding: 10px 20px; border-radius: 20px; color: #ffffff; 
     font-size: 20px;">Voir la liste des membres</a>
 
+
     <div class="container" style="width: 700px;">
         <div style="text-align: center">
             <form action="index.php" method="post">
@@ -72,6 +78,21 @@ try {
                 <label for="matricule">Matricule:</label>
                 <input type="text" id="matricule" readonly value="<?php echo $nextMatricule; ?>">
                 </div><br>
+
+            <div class="form-group">
+                <label for="nom">Nom :</label>
+                <input type="text" id="nom" name="nom">
+            </div><br>
+
+            <div class="form-group">
+
+<div class="container" style="width: 700px;">
+    <div style="text-align: center">
+        <form action="index.php" method="post">
+            <div class="form-group">
+                <label for="matricule">Matricule :</label>
+                <input type="text" id="matricule" name="matricule">
+            </div><br>
 
             <div class="form-group">
                 <label for="nom">Nom :</label>
@@ -112,6 +133,7 @@ try {
             </div><br>
 
             <div class="form-group">
+
          <label for="statut">Statut :</label>
             <select id="statut" name="statut">
             <?php foreach ($statut as $s): ?>

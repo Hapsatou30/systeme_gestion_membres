@@ -97,6 +97,7 @@ class Membre implements CRUD
      //la methode pour ajouter un membre
 
     //la methode pour ajouter un membre
+
     public function ajoutMembre($matricule, $nom, $prenom, $sexe, $situationMatrimoniale, $id_statut, $id_age)
     {
         try {
@@ -109,6 +110,7 @@ class Membre implements CRUD
             $stmt_insertion->bindParam(':situation_matrimoniale', $situationMatrimoniale);
             $stmt_insertion->bindParam(':id_statut', $id_statut);
             $stmt_insertion->bindParam(':id_age', $id_age);
+
             $stmt_insertion->execute();
             header("Location: affichage.php");
             exit();
