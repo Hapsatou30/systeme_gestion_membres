@@ -19,18 +19,14 @@ body {
     border-radius: 20px;
     box-shadow: 30px 30px 30px 30px rgba(0, 0, 0, 0.1);
 }
-.header{
-    padding: 50px;
-    background: #34495e;
-}
-.header h1{
+ h1{
+   
     color: #3498db ;
-    font-size: 50px;
+    font-size: 60px;
     font-family: iceberg;
     font-weight: bold;
     text-align: center;
     margin-top: 2%;
-    padding: 10px;
 }
 .form-group{
     display: flex;
@@ -44,7 +40,6 @@ label{
     font-weight: bold;
     font-family: iceberg;
     color: #34495e;
-    flex: 1; 
 }
 input[type="text"],select {
     padding: 12px 20px;

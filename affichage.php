@@ -14,10 +14,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="header">
-<h2 >La liste des membres de la commune de Patte D'oie</h2>
-</div>
-
     <a href="index.php" style="margin: 20px; 
                 
             display: inline-block; 
@@ -30,6 +26,8 @@
             >Ajouter un Membre
         </a>
     <div class="container">
+        <h2 style="background-color: #34495e;">La liste des membres de la commune de Patte D'oie</h2>
+        
         <div class="row">
             <?php foreach($resultats as $membre) {?>
                 <div class="col-lg-4"> <!-- Utilisation de col-md-6 pour afficher deux cartes par ligne sur les écrans de taille moyenne et plus grands -->

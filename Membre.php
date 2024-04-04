@@ -131,7 +131,7 @@ class Membre implements CRUD
 
             //execute la requette 
             $stmt->execute();
-            
+
             //recuperation des resultats dans un tableau
             $resultats = $stmt ->fetchAll(PDO::FETCH_ASSOC);
 
