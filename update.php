@@ -32,6 +32,13 @@ if(isset($_POST['enregistrer'])) {
     exit(); // Arrêter l'exécution du script après la redirection
 }
 
+// Vérification si le matricule est fourni dans la requête GET
+if (!isset($_GET['matricule'])) {
+    // Gérer le cas où aucun matricule n'est fourni
+    echo "Aucun matricule n'est fourni.";
+    exit();
+}
+
 // Récupérer les données du membre à partir du matricule fourni dans la requête GET
 $sql_query = "SELECT * FROM membre WHERE matricule = :matricule";
 
@@ -43,11 +50,18 @@ $stmt_membre->bindParam(':matricule', $_GET['matricule'], PDO::PARAM_STR);
 
 // Exécution de la requête
 if ($stmt_membre->execute()) {
-    // Récupération des résultats de la requête
-    $membre = $stmt_membre->fetch(PDO::FETCH_ASSOC);
+    // Vérifier si le membre existe
+    if ($membre = $stmt_membre->fetch(PDO::FETCH_ASSOC)) {
+        // Continuer avec l'affichage du formulaire
+    } else {
+        // Gérer le cas où aucun membre n'est trouvé avec le matricule fourni
+        echo "Aucun membre trouvé avec ce matricule.";
+        exit();
+    }
 } else {
     // Gestion de l'erreur en cas d'échec de l'exécution de la requête
     echo "Erreur lors de la récupération des données du membre.";
+    exit();
 }
 ?>
 <!DOCTYPE html>
@@ -85,46 +99,47 @@ if ($stmt_membre->execute()) {
                     <input type="text" id="prenom" name="prenom" value="<?php echo $membre['prenom']; ?>"><br><br>
                 </div>
 
-               
                 <div class="form-group">
                     <label for="sexe">Sexe :</label>
                     <select id="sexe" name="sexe">
-                        <option value="Masculin" <?php if($membre['sexe'] == 'homme') echo 'selected'; ?>>Masc</option>
-                        <option value="Feminin" <?php if($membre['sexe'] == 'femme') echo 'selected'; ?>>Femin</option>
+                        <option value="homme" <?php if($membre['sexe'] == 'homme') echo 'selected'; ?>>Masculin</option>
+                        <option value="femme" <?php if($membre['sexe'] == 'femme') echo 'selected'; ?>>Féminin</option>
                     </select><br><br>
                 </div>
 
                 <div class="form-group">
                     <label for="situation_matrimoniale">Situation matrimoniale :</label>
                     <select id="situation_matrimoniale" name="situation_matrimoniale">
-                        <option value="celibataire" <?php if($membre['situation_matrimoniale'] == 'Célibataire') echo 'selected'; ?>>Célibataire</option>
-                        <option value="marie" <?php if($membre['situation_matrimoniale'] == 'Marié(e)') echo 'selected'; ?>>Marié(e)</option>
-                        <option value="divorce" <?php if($membre['situation_matrimoniale'] == 'Divorcé(e)') echo 'selected'; ?>>Divorcé(e)</option>
-                        <option value="veuf" <?php if($membre['situation_matrimoniale'] == 'Veuf(ve)') echo 'selected'; ?>>Veuf/Veuve</option>
+                        <option value="celibataire" <?php if($membre['situation_matrimoniale'] == 'celibataire') echo 'selected'; ?>>Célibataire</option>
+                        <option value="marie" <?php if($membre['situation_matrimoniale'] == 'marie') echo 'selected'; ?>>Marié(e)</option>
+                        <option value="divorce" <?php if($membre['situation_matrimoniale'] == 'divorce') echo 'selected'; ?>>Divorcé(e)</option>
+                        <option value="veuf" <?php if($membre['situation_matrimoniale'] == 'veuf') echo 'selected'; ?>>Veuf/Veuve</option>
                     </select><br><br>
                 </div>
 
-                <div class="form-group">
-    <label for="id_statut">Statut :</label>
-    <select id="id_statut" name="id_statut">
-        <?php foreach ($statuts as $statut): ?>
-            <option value="<?php echo $statut['id']; ?>" <?php if ($statut['id'] == $membre['id_statut']) echo 'selected'; ?>><?php echo $statut['titre']; ?></option>
-        <?php endforeach; ?>
-    </select>
-</div><br>
-<div class="form-group">
-    <label for="id_age">Tranche d'âge :</label>
-    <select id="id_age" name="id_age">
-        <?php foreach ($ages as $age): ?>
-            <option value="<?php echo $age['id']; ?>" <?php if ($age['id'] == $membre['id_age']) echo 'selected'; ?>><?php echo $age['min_age'] . ' - ' . $age['max_age']; ?></option>
-        <?php endforeach; ?>
-    </select>
-</div><br>
                 <div class="form-group">
                     <label for="statut_emploi">Statut d'emploi :</label>
                     <select id="statut_emploi" name="statut_emploi">
                         <option value="Chômeur" <?php if($membre['statut_emploi'] == 'Chômeur') echo 'selected'; ?>>Chômeur</option>
                         <option value="Non chômeur" <?php if($membre['statut_emploi'] == 'Non chômeur') echo 'selected'; ?>>Non chômeur</option>
+                    </select><br><br>
+                </div>
+
+                <div class="form-group">
+                    <label for="id_statut">Statut :</label>
+                    <select id="id_statut" name="id_statut">
+                        <?php foreach ($statuts as $statut): ?>
+                            <option value="<?php echo $statut['id']; ?>" <?php if ($statut['id'] == $membre['id_statut']) echo 'selected'; ?>><?php echo $statut['titre']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div><br>
+
+                <div class="form-group">
+                    <label for="id_age">Tranche d'âge :</label>
+                    <select id="id_age" name="id_age">
+                        <?php foreach ($ages as $age): ?>
+                            <option value="<?php echo $age['id']; ?>" <?php if ($age['id'] == $membre['id_age']) echo 'selected'; ?>><?php echo $age['min_age'] . ' - ' . $age['max_age']; ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div><br>
 
