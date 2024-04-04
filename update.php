@@ -1,23 +1,11 @@
 <?php
 require_once 'configue.php'; // Inclure le fichier contenant la configuration
 
-// Vérifier si le formulaire est soumis
-if(isset($_POST['enregistrer'])) {
-    // Récupérer les données du formulaire
-    $matricule = $_POST['matricule'];
-    $nom = $_POST['nom'];
-    $prenom = $_POST['prenom'];
-    $tranche_age = $_POST['tranche_age'];
-    $sexe = $_POST['sexe'];
-    $situation_matrimoniale = $_POST['situation_matrimoniale'];
-    $statut = $_POST['statut'];
-
-    // Appeler la fonction de mise à jour du membre
-    $membre->modifierMembre($matricule, $nom, $prenom, $tranche_age, $sexe, $situation_matrimoniale, $statut);
-
-    // Redirection vers la page index.php après la mise à jour réussie
-    header("Location: affichage.php");
-    exit(); // Arrêter l'exécution du script après la redirection
+// Vérification si le matricule est fourni dans la requête GET
+if (!isset($_GET['matricule'])) {
+    // Gérer le cas où aucun matricule n'est fourni
+    echo "Aucun matricule n'est fourni.";
+    exit();
 }
 
 // Récupérer les données du membre à partir du matricule fourni dans la requête GET
@@ -31,11 +19,18 @@ $stmt_membre->bindParam(':matricule', $_GET['matricule'], PDO::PARAM_STR);
 
 // Exécution de la requête
 if ($stmt_membre->execute()) {
-    // Récupération des résultats de la requête
-    $membre = $stmt_membre->fetch(PDO::FETCH_ASSOC);
+    // Vérifier si le membre existe
+    if ($membre = $stmt_membre->fetch(PDO::FETCH_ASSOC)) {
+        // Continuer avec l'affichage du formulaire
+    } else {
+        // Gérer le cas où aucun membre n'est trouvé avec le matricule fourni
+        echo "Aucun membre trouvé avec ce matricule.";
+        exit();
+    }
 } else {
     // Gestion de l'erreur en cas d'échec de l'exécution de la requête
     echo "Erreur lors de la récupération des données du membre.";
+    exit();
 }
 ?>
 <!DOCTYPE html>
@@ -76,10 +71,10 @@ if ($stmt_membre->execute()) {
             <div class="form-group">
                 <label for="tranche_age">Tranche d'âge :</label>
                 <select id="tranche_age" name="tranche_age">
-                    <option value="moins_de_18" <?php if($membre['tranche_age'] == 'moins_de_18') echo 'selected'; ?>>Moins de 18</option>
-                    <option value="18_30" <?php if($membre['tranche_age'] == '18_30') echo 'selected'; ?>>18-30</option>
-                    <option value="30_50" <?php if($membre['tranche_age'] == '30_50') echo 'selected'; ?>>30-50</option>
-                    <option value="plus_de_50" <?php if($membre['tranche_age'] == 'plus_de_50') echo 'selected'; ?>>Plus de 50</option>
+                    <option value="moins_de_18" <?php if($membre['id_age'] == 'moins_de_18') echo 'selected'; ?>>Moins de 18</option>
+                    <option value="18_30" <?php if($membre['id_age'] == '18_30') echo 'selected'; ?>>18-30</option>
+                    <option value="30_50" <?php if($membre['id_age'] == '30_50') echo 'selected'; ?>>30-50</option>
+                    <option value="plus_de_50" <?php if($membre['id_age'] == 'plus_de_50') echo 'selected'; ?>>Plus de 50</option>
                 </select><br><br>
             </div>
 
@@ -103,7 +98,19 @@ if ($stmt_membre->execute()) {
 
             <div class="form-group">
                 <label for="statut">Statut :</label>
-                <input type="text" id="statut" name="statut" value="<?php echo $membre['statut']; ?>"><br><br>
+                <select id="statut" name="statut">
+                    <?php
+                    // Requête pour récupérer tous les statuts disponibles
+                    $sql_statuts = "SELECT * FROM statut";
+                    $stmt_statuts = $connexion->query($sql_statuts);
+                    
+                    // Parcourir les résultats et afficher chaque option
+                    while ($row_statut = $stmt_statuts->fetch(PDO::FETCH_ASSOC)) {
+                        $selected = ($row_statut['titre'] == $membre['id_statut']) ? 'selected' : '';
+                        echo '<option value="' . $row_statut['titre'] . '" ' . $selected . '>' . $row_statut['titre'] . '</option>';
+                    }
+                    ?>
+                </select><br><br>
             </div>
 
             <input type="submit" name="enregistrer" value="Enregistrer">
