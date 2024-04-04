@@ -1,19 +1,31 @@
 <?php
 require_once 'configue.php'; // Inclure le fichier contenant la configuration
 
+// Récupérer les données des tables statut et age pour les options du formulaire
+$sql_statuts = "SELECT * FROM statut";
+$stmt_statuts = $connexion->prepare($sql_statuts);
+$stmt_statuts->execute();
+$statuts = $stmt_statuts->fetchAll(PDO::FETCH_ASSOC);
+
+$sql_ages = "SELECT * FROM tranche_age";
+$stmt_ages = $connexion->prepare($sql_ages);
+$stmt_ages->execute();
+$ages = $stmt_ages->fetchAll(PDO::FETCH_ASSOC);
+
 // Vérifier si le formulaire est soumis
 if(isset($_POST['enregistrer'])) {
     // Récupérer les données du formulaire
     $matricule = $_POST['matricule'];
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
-    $tranche_age = $_POST['tranche_age'];
     $sexe = $_POST['sexe'];
     $situation_matrimoniale = $_POST['situation_matrimoniale'];
-    $statut = $_POST['statut'];
+    $id_statut = $_POST['id_statut'];
+    $id_age = $_POST['id_age'];
+    $statut_emploi = $_POST['statut_emploi'];
 
     // Appeler la fonction de mise à jour du membre
-    $membre->modifierMembre($matricule, $nom, $prenom, $tranche_age, $sexe, $situation_matrimoniale, $statut);
+    $membre->modifierMembre($matricule, $nom, $prenom, $sexe, $situation_matrimoniale, $id_statut, $id_age, $statut_emploi);
 
     // Redirection vers la page index.php après la mise à jour réussie
     header("Location: affichage.php");
@@ -52,64 +64,73 @@ if ($stmt_membre->execute()) {
 </head>
 <body>
     <div class="header">
-    <h1 style="color: #3498db ;">Modifier un membre</h1>
+        <h1 style="color: #3498db;">Modifier un membre</h1>
     </div>
-<div class="container" style="width: 700px;">
-    <div style="text-align: center">
-        <form action="update.php" method="post">
-            <!-- Champs du formulaire -->
-            <div class="form-group">
-                <label for="matricule">Matricule :</label>
-                <input type="text" id="matricule" name="matricule" value="<?php echo $membre['matricule']; ?>"><br><br>
-            </div>
+    <div class="container" style="width: 700px;">
+        <div style="text-align: center">
+            <form action="update.php" method="post">
+                <!-- Champs du formulaire -->
+                <div class="form-group">
+                    <label for="matricule">Matricule :</label>
+                    <input type="text" id="matricule" name="matricule" value="<?php echo $membre['matricule']; ?>" readonly><br><br>
+                </div>
 
-            <div class="form-group">
-                <label for="nom">Nom :</label>
-                <input type="text" id="nom" name="nom" value="<?php echo $membre['nom']; ?>"><br><br>
-            </div>
+                <div class="form-group">
+                    <label for="nom">Nom :</label>
+                    <input type="text" id="nom" name="nom" value="<?php echo $membre['nom']; ?>"><br><br>
+                </div>
 
-            <div class="form-group">
-                <label for="prenom">Prénom :</label>
-                <input type="text" id="prenom" name="prenom" value="<?php echo $membre['prenom']; ?>"><br><br>
-            </div>
+                <div class="form-group">
+                    <label for="prenom">Prénom :</label>
+                    <input type="text" id="prenom" name="prenom" value="<?php echo $membre['prenom']; ?>"><br><br>
+                </div>
 
-            <div class="form-group">
-                <label for="tranche_age">Tranche d'âge :</label>
-                <select id="tranche_age" name="tranche_age">
-                    <option value="moins_de_18" <?php if($membre['tranche_age'] == 'moins_de_18') echo 'selected'; ?>>Moins de 18</option>
-                    <option value="18_30" <?php if($membre['tranche_age'] == '18_30') echo 'selected'; ?>>18-30</option>
-                    <option value="30_50" <?php if($membre['tranche_age'] == '30_50') echo 'selected'; ?>>30-50</option>
-                    <option value="plus_de_50" <?php if($membre['tranche_age'] == 'plus_de_50') echo 'selected'; ?>>Plus de 50</option>
-                </select><br><br>
-            </div>
+               
+                <div class="form-group">
+                    <label for="sexe">Sexe :</label>
+                    <select id="sexe" name="sexe">
+                        <option value="Masculin" <?php if($membre['sexe'] == 'homme') echo 'selected'; ?>>Masc</option>
+                        <option value="Feminin" <?php if($membre['sexe'] == 'femme') echo 'selected'; ?>>Femin</option>
+                    </select><br><br>
+                </div>
 
-            <div class="form-group">
-                <label for="sexe">Sexe :</label>
-                <select id="sexe" name="sexe">
-                    <option value="homme" <?php if($membre['sexe'] == 'homme') echo 'selected'; ?>>M</option>
-                    <option value="femme" <?php if($membre['sexe'] == 'femme') echo 'selected'; ?>>F</option>
-                </select><br><br>
-            </div>
+                <div class="form-group">
+                    <label for="situation_matrimoniale">Situation matrimoniale :</label>
+                    <select id="situation_matrimoniale" name="situation_matrimoniale">
+                        <option value="celibataire" <?php if($membre['situation_matrimoniale'] == 'Célibataire') echo 'selected'; ?>>Célibataire</option>
+                        <option value="marie" <?php if($membre['situation_matrimoniale'] == 'Marié(e)') echo 'selected'; ?>>Marié(e)</option>
+                        <option value="divorce" <?php if($membre['situation_matrimoniale'] == 'Divorcé(e)') echo 'selected'; ?>>Divorcé(e)</option>
+                        <option value="veuf" <?php if($membre['situation_matrimoniale'] == 'Veuf(ve)') echo 'selected'; ?>>Veuf/Veuve</option>
+                    </select><br><br>
+                </div>
 
-            <div class="form-group">
-                <label for="situation_matrimoniale">Situation matrimoniale :</label>
-                <select id="situation_matrimoniale" name="situation_matrimoniale">
-                    <option value="celibataire" <?php if($membre['situation_matrimoniale'] == 'celibataire') echo 'selected'; ?>>Célibataire</option>
-                    <option value="marie" <?php if($membre['situation_matrimoniale'] == 'marie') echo 'selected'; ?>>Marié(e)</option>
-                    <option value="divorce" <?php if($membre['situation_matrimoniale'] == 'divorce') echo 'selected'; ?>>Divorcé(e)</option>
-                    <option value="veuf" <?php if($membre['situation_matrimoniale'] == 'veuf') echo 'selected'; ?>>Veuf/Veuve</option>
-                </select><br><br>
-            </div>
+                <div class="form-group">
+    <label for="id_statut">Statut :</label>
+    <select id="id_statut" name="id_statut">
+        <?php foreach ($statuts as $statut): ?>
+            <option value="<?php echo $statut['id']; ?>" <?php if ($statut['id'] == $membre['id_statut']) echo 'selected'; ?>><?php echo $statut['titre']; ?></option>
+        <?php endforeach; ?>
+    </select>
+</div><br>
+<div class="form-group">
+    <label for="id_age">Tranche d'âge :</label>
+    <select id="id_age" name="id_age">
+        <?php foreach ($ages as $age): ?>
+            <option value="<?php echo $age['id']; ?>" <?php if ($age['id'] == $membre['id_age']) echo 'selected'; ?>><?php echo $age['min_age'] . ' - ' . $age['max_age']; ?></option>
+        <?php endforeach; ?>
+    </select>
+</div><br>
+                <div class="form-group">
+                    <label for="statut_emploi">Statut d'emploi :</label>
+                    <select id="statut_emploi" name="statut_emploi">
+                        <option value="Chômeur" <?php if($membre['statut_emploi'] == 'Chômeur') echo 'selected'; ?>>Chômeur</option>
+                        <option value="Non chômeur" <?php if($membre['statut_emploi'] == 'Non chômeur') echo 'selected'; ?>>Non chômeur</option>
+                    </select>
+                </div><br>
 
-            <div class="form-group">
-                <label for="statut">Statut :</label>
-                <input type="text" id="statut" name="statut" value="<?php echo $membre['statut']; ?>"><br><br>
-            </div>
-
-            <input type="submit" name="enregistrer" value="Enregistrer">
-        </form>
+                <input type="submit" name="enregistrer" value="Enregistrer">
+            </form>
+        </div>
     </div>
-</div>
-
 </body>
 </html>
