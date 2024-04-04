@@ -20,8 +20,8 @@ class Membre implements CRUD
      {
         $this->connexion=$connexion;
         $this->matricule=$matricule;
-        $this->nom=$nom;
-        $this->prenom=$prenom;
+        $this->setNom($nom);
+        $this->setPrenom($prenom);
         $this->sexe=$sexe;
         $this->situationMatrimoniale=$situationMatrimoniale;
         $this->statut=$statut;
@@ -48,7 +48,12 @@ class Membre implements CRUD
 
      public function setNom($nouveauNom)
      {
-        $this->nom=$nouveauNom;
+         // Vérification que le nom n'est pas vide et qu'il ne contient que des lettres et espaces
+         if (!empty($nouveauNom) && preg_match('/^[a-zA-Z\s]+$/', $nouveauNom)) {
+             $this->nom = $nouveauNom;
+         } else {
+             throw new InvalidArgumentException("Le nom doit être une chaîne non vide contenant uniquement des lettres et des espaces.");
+         }
      }
      public function getprenom()
      {
@@ -57,7 +62,12 @@ class Membre implements CRUD
 
      public function setPrenom($nouveauPrenom)
      {
-        $this->prenom=$nouveauPrenom;
+         // Vérification que le prénom n'est pas vide et qu'il ne contient que des lettres et espaces
+         if (!empty($nouveauPrenom) && preg_match('/^[a-zA-Z\s]+$/', $nouveauPrenom)) {
+             $this->prenom = $nouveauPrenom;
+         } else {
+             throw new InvalidArgumentException("Le prénom doit être une chaîne non vide contenant uniquement des lettres et des espaces.");
+         }
      }
      public function getTrancheAge()
      {

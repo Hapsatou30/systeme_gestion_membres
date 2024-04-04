@@ -26,8 +26,20 @@ try {
         $id_statut = isset($_POST['id_statut']) ? $_POST['id_statut'] : '';
         $id_age = isset($_POST['id_age']) ? $_POST['id_age'] : '';
         $statut_emploi = isset($_POST['statut_emploi']) ? $_POST['statut_emploi'] : '';
-        // var_dump($_POST);
 
+        // Vérifier si le nom est vide ou contient des chiffres
+        if (empty($nom) || preg_match('/[0-9]/', $nom)) {
+            echo "Erreur : Le nom est vide ou contient des chiffres.";
+            exit(); // Arrêter l'exécution du script
+        }
+
+        // Vérifier si le prénom est vide ou contient des chiffres
+        if (empty($prenom) || preg_match('/[0-9]/', $prenom)) {
+            echo "Erreur : Le prénom est vide ou contient des chiffres.";
+            exit(); // Arrêter l'exécution du script
+        }
+
+        // Effectuer l'ajout du membre
         $membre->ajoutMembre($matricule, $nom, $prenom, $sexe, $situation_matrimoniale, $id_statut, $id_age, $statut_emploi);
     }
 } catch (PDOException $e) {
