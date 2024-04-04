@@ -54,10 +54,10 @@
                                     <h6 style="color: #3498db;">Situation matrimoniale  :</h6>
                                     <p class="card-text"><?php echo $membre['situation_matrimoniale']; ?></p>
                                 </div>
-                                <div class="statut">
+                                <!-- <div class="statut">
                                     <h6 style="color: #3498db;">Statut  :</h6>
                                     <p class="card-text"><?php echo $membre['id_statut']; ?></p>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="update_delete">
                                 <div class="update"> 
