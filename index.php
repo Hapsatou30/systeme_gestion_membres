@@ -72,18 +72,18 @@ require_once 'configue.php'; // Inclure le fichier contenant la conf
                 <div class="form-group">
                     <label for="sexe">Sexe :</label>
                     <select id="sexe" name="sexe">
-                        <option value="homme">M</option>
-                        <option value="femme">F</option>
+                        <option value="Masculin">Masc</option>
+                        <option value="Feminin">Femin</option>
                     </select>
                 </div><br>
 
                 <div class="form-group">
                     <label for="situation_matrimoniale">Situation matrimoniale :</label>
                     <select id="situation_matrimoniale" name="situation_matrimoniale">
-                        <option value="celibataire">Célibataire</option>
-                        <option value="marie">Marié(e)</option>
-                        <option value="divorce">Divorcé(e)</option>
-                        <option value="veuf">Veuf/Veuve</option>
+                        <option value="Célibataire">Célibataire</option>
+                        <option value="Marié(e)">Marié(e)</option>
+                        <option value="Divorcé(e)">Divorcé(e)</option>
+                        <option value="Veuf(ve)">Veuf/Veuve</option>
                     </select>
                 </div><br>
 
