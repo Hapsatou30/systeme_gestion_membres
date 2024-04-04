@@ -76,20 +76,20 @@
     transition: transform 0.3s ease-in-out; 
 }
 .nom,.sexe,.statut,
-.tranche-age,.situation-matrimoniale 
+.tranche-age,.situation-matrimoniale, .statut-emploi
 {
    display: flex;
    align-items: center;
    justify-content: space-between;
 }
-.nom h6, .tranche-age h6, .sexe h6, .situation-matrimoniale h6, .statut h6  {
-    font-size: 20px;
-    font-family: iceberg;
+.nom h6, .tranche-age h6, .sexe h6, .situation-matrimoniale h6, .statut h6 ,.statut-emploi h6 {
+    font-size: 18px;
+    font-family: Roboto;
     font-weight: bold;
     color: #ffff; 
     margin-left: 10px;
 }
-.nom p, .tranche-age p, .sexe p, .situation-matrimoniale p, .statut p{
+.nom p, .tranche-age p, .sexe p, .situation-matrimoniale p, .statut p,.statut-emploi p{
     font-size: 18px;
     font-weight: bold;
     text-align: center;

@@ -31,27 +31,32 @@
                         <div class="card-body">
                             <h5 class="card-title" style="color: #34495e; font-size: 28px;"><i class="fas fa-city"></i>  N° de  	matricule : <?php echo ' '. $membre['matricule']; ?></h5>
                             <div class="membre">
-                                <div class="nom">
-                                    <h6 style="color: #34495e;" >Prenom et Nom  :  </h6>
-                                    <p class="card-text"><?php echo $membre['prenom']. ' ' . $membre['nom']; ?> </p>
-                                </div>
-                                <div class="tranche-age">
-                                    <h6 style="color: #34495e;">Tranche d'âge  :</h6>
-                                    <p class="card-text"><?php echo " " .$membre['id_age']; ?></p>
-                                </div>
-                                <div class="sexe">
-                                    <h6 style="color: #34495e;">Sexe  :</h6>
-                                    <p class="card-text"><?php echo $membre['sexe']; ?></p>
-                                </div>
-                                <div class="situation-matrimoniale">
-                                    <h6 style="color: #34495e;">Situation matrimoniale  :</h6>
-                                    <p class="card-text"><?php echo $membre['situation_matrimoniale']; ?></p>
-                                </div>
-                                <!-- <div class="statut">
-                                    <h6 style="color: #34495e;">Statut  :</h6>
-                                    <p class="card-text"><?php echo $membre['id_statut']; ?></p>
-                                </div> -->
+                            <div class="nom">
+                                <h6 style="color: #34495e;" >Prenom et Nom  :  </h6>
+                                <p class="card-text"><?php echo $membre['prenom']. ' ' . $membre['nom']; ?> </p>
                             </div>
+                            <div class="tranche-age">
+                                <h6 style="color: #34495e;">Tranche d'âge  :</h6>
+                                <p class="card-text"><?php echo $membre['tranche_age']; ?></p>
+                            </div>
+                            <div class="sexe">
+                                <h6 style="color: #34495e;">Sexe  :</h6>
+                                <p class="card-text"><?php echo $membre['sexe']; ?></p>
+                            </div>
+                            <div class="situation-matrimoniale">
+                                <h6 style="color: #34495e;">Situation matrimoniale  :</h6>
+                                <p class="card-text"><?php echo $membre['situation_matrimoniale']; ?></p>
+                            </div>
+                            <div class="statut-emploi">
+                                <h6 style="color: #34495e;">Statut d'emploi :</h6>
+                                <p class="card-text"><?php echo $membre['statut_emploi']; ?></p>
+                            </div>
+                            <div class="statut">
+                                <h6 style="color: #34495e;">Statut  :</h6>
+                                <p class="card-text"><?php echo $membre['statut']; ?></p>
+                            </div>
+                        </div>
+
                             <div class="update_delete">
                                 <div class="update"> 
                                     <a href="update.php?matricule=<?php echo $membre['matricule']; ?>" class="btn" style="font-size: 28px; color: #34495e ;"><i class="fas fa-edit"></i></a>

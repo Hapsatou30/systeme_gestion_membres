@@ -129,31 +129,32 @@ class Membre implements CRUD
         }
     }
     
+   //la methode pour afficher les informations des membre
+   public function lireMembre()
+   {
+      try {
+         // La requête SQL pour récupérer les informations complètes des membres avec les données associées des tables statut et tranche_age
+         $sql = "SELECT m.*, s.titre AS statut, CONCAT(t.min_age, '-', t.max_age) AS tranche_age 
+                  FROM membre m
+                  JOIN statut s ON m.id_statut = s.id
+                  JOIN tranche_age t ON m.id_age = t.id";
 
-     //la methode pour afficher les informations des membre
-     public function lireMembre()
-     {
-        try {
-            //la requette sql
-            $sql="SELECT * FROM membre";
+         //préparer la requette
+         $stmt= $this->connexion->prepare($sql);
 
-            //preparer la requette
-            $stmt= $this->connexion->prepare($sql);
+         //exécute la requette 
+         $stmt->execute();
+         
+         //récupération des résultats dans un tableau
+         $resultats = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            //execute la requette 
-            $stmt->execute();
-            
-            //recuperation des resultats dans un tableau
-            $resultats = $stmt ->fetchAll(PDO::FETCH_ASSOC);
-
-            return $resultats;
-           
-        } catch (PDOException $e) {
-            //gestion des erreurs
-            die("::ERREUR:: Impossible de d'afficher les détails des membre");
-        }
-        
-     }
+         return $resultats;
+         
+      } catch (PDOException $e) {
+         //gestion des erreurs
+         die("::ERREUR:: Impossible de d'afficher les détails des membres");
+      } 
+   }
 
      
 //      public function modifierMembre($matricule, $nom, $prenom, $tranche_age, $sexe, $situationMatrimoniale, $statut)
