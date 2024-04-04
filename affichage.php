@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="tranche-age">
                                     <h6 style="color: #3498db;">Tranche d'âge  :</h6>
-                                    <p class="card-text"><?php echo " " .$membre['tranche_age']; ?></p>
+                                    <p class="card-text"><?php echo " " .$membre['id_age']; ?></p>
                                 </div>
                                 <div class="sexe">
                                     <h6 style="color: #3498db;">Sexe  :</h6>
@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="statut">
                                     <h6 style="color: #3498db;">Statut  :</h6>
-                                    <p class="card-text"><?php echo $membre['statut']; ?></p>
+                                    <p class="card-text"><?php echo $membre['id_statut']; ?></p>
                                 </div>
                             </div>
                             <div class="update_delete">

@@ -57,7 +57,7 @@
     transition: transform 0.3s ease-in-out; 
 }
 .nom,.sexe,.statut,
-.tranche-age,.situation-matrimoniale
+.tranche-age,.situation-matrimoniale 
 {
    display: flex;
    align-items: center;
