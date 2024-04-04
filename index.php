@@ -76,15 +76,6 @@ try {
                 <input type="text" id="matricule" readonly value="<?php echo $nextMatricule; ?>">
                 </div><br>
 
-
-<div class="container" style="width: 700px;">
-    <div style="text-align: center">
-        <form action="index.php" method="post">
-            <div class="form-group">
-                <label for="matricule">Matricule :</label>
-                <input type="text" id="matricule" name="matricule">
-            </div><br>
-
             <div class="form-group">
                 <label for="nom">Nom :</label>
                 <input type="text" id="nom" name="nom">
@@ -94,7 +85,6 @@ try {
                 <label for="prenom">Prénom :</label>
                 <input type="text" id="prenom" name="prenom">
             </div><br>
-
 
                 <div class="form-group">
                     <label for="sexe">Sexe :</label>
@@ -120,17 +110,6 @@ try {
                     <?php foreach ($tranche_age as $tranch): ?>
                         <option
                             value="<?php echo $tranch['min_age'] . '_' . $tranch['max_age']; ?>"><?php echo $tranch['min_age'] . '-' . $tranch['max_age']; ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-
-            <br>
-
-            <div class="form-group">
-                <label for="situation_matrimoniale">Situation matrimoniale :</label>
-                <select id="situation_matrimoniale" name="situation_matrimoniale">
-                    <?php foreach ($situation_matrimoniales as $matrimonial): ?>
-                        <option value="<?php echo $matrimonial; ?>"><?php echo $matrimonial; ?></option>
                     <?php endforeach; ?>
                 </select>
             </div><br>
