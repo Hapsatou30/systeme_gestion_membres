@@ -71,10 +71,10 @@ try {
 <div class="container" style="width: 700px;">
     <div style="text-align: center">
         <form action="index.php" method="post">
-            <div class="form-group">
-                <label for="matricule">Matricule :</label>
-                <input type="text" id="matricule" name="matricule">
-            </div><br>
+        <div class="form-group">
+              <label for="matricule">Matricule:</label>
+              <input type="text" id="matricule" readonly value="<?php echo $nextMatricule; ?>">
+              </div><br>
 
             <div class="form-group">
                 <label for="nom">Nom :</label>
