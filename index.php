@@ -45,8 +45,8 @@ require_once 'configue.php'; // Inclure le fichier contenant la conf
         <div style="text-align: center">
             <form action="index.php" method="post">
                 <div class="form-group">
-                    <label for="matricule">Matricule :</label>
-                    <input type="text" id="matricule" name="matricule">
+                <label for="matricule">Matricule:</label>
+                <input type="text" id="matricule" readonly value="<?php echo $nextMatricule; ?>">
                 </div><br>
 
                 <div class="form-group">
