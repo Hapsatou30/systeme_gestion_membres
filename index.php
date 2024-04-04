@@ -71,10 +71,10 @@ try {
 <div class="container" style="width: 700px;">
     <div style="text-align: center">
         <form action="index.php" method="post">
-        <div class="form-group">
-              <label for="matricule">Matricule:</label>
-              <input type="text" id="matricule" readonly value="<?php echo $nextMatricule; ?>">
-              </div><br>
+            <div class="form-group">
+                <label for="matricule">Matricule :</label>
+                <input type="text" id="matricule" name="matricule">
+            </div><br>
 
             <div class="form-group">
                 <label for="nom">Nom :</label>
@@ -85,6 +85,24 @@ try {
                 <label for="prenom">Prénom :</label>
                 <input type="text" id="prenom" name="prenom">
             </div><br>
+
+                <div class="form-group">
+                    <label for="sexe">Sexe :</label>
+                    <select id="sexe" name="sexe">
+                        <option value="Masculin">Masc</option>
+                        <option value="Feminin">Femin</option>
+                    </select>
+                </div><br>
+
+                <div class="form-group">
+                    <label for="situation_matrimoniale">Situation matrimoniale :</label>
+                    <select id="situation_matrimoniale" name="situation_matrimoniale">
+                        <option value="Célibataire">Célibataire</option>
+                        <option value="Marié(e)">Marié(e)</option>
+                        <option value="Divorcé(e)">Divorcé(e)</option>
+                        <option value="Veuf(ve)">Veuf/Veuve</option>
+                    </select>
+                </div><br>
 
             <div class="form-group">
                 <label for="tranche_age">Tranche d'âge :</label>
@@ -98,24 +116,14 @@ try {
 
             <br>
 
-                <<div class="form-group">
-                   <label for="sexe">Sexe :</label>
-                <select id="sexe" name="sexe">
-                    <option value="Masculin">M</option>
-                    <option value="Feminin">F</option>
-                </select>
-                </div>
-
-            <br>
-
             <div class="form-group">
-                <label for="situation_matrimoniale">Situation matrimoniale :</label>
-                <select id="situation_matrimoniale" name="situation_matrimoniale">
-                    <?php foreach ($situation_matrimoniales as $matrimonial): ?>
-                        <option value="<?php echo $matrimonial; ?>"><?php echo $matrimonial; ?></option>
-                    <?php endforeach; ?>
+                <label for="sexe">Sexe :</label>
+                <select id="sexe" name="sexe">
+                    <option value="homme">M</option>
+                    <option value="femme">F</option>
                 </select>
             </div><br>
+            <br>
 
             <div class="form-group">
          <label for="statut">Statut :</label>
