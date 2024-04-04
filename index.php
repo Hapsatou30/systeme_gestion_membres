@@ -54,13 +54,10 @@ try {
 </head>
 <body>
 <div class="header">
-    <h1 style="color: #3498db;">Ajouter un membre à la Commune de Patte D'oie</h1>
+    <img src="./images/senegal.svg.png" alt="">
+    <h1 >Ajouter un membre à la Commune de Patte D'oie</h1>
 </div>
-<a href="affichage.php" style="position: absolute;
-     top: 0; right: 0; margin: 20px; display: inline-block;
-    text-decoration: none; background-color: #3498db; 
-    padding: 10px 20px; border-radius: 20px; color: #ffffff; 
-    font-size: 20px;">Voir la liste des membres</a>
+<a href="affichage.php" class="bouton">Voir la liste des membres</a>
 
 <div class="container" style="width: 700px;">
     <div style="text-align: center">

@@ -15,22 +15,41 @@ body {
     justify-content: center;
     align-items: center;
    height: 100vh;
-   
     border-radius: 20px;
     box-shadow: 30px 30px 30px 30px rgba(0, 0, 0, 0.1);
 }
 .header{
-    padding: 50px;
-    background: #34495e;
+   
+    background: #3498db;
+}
+.header img{
+    width: 100px;
+    margin: 10px;
 }
 .header h1{
-    color: #3498db ;
+    color: #ffff ;
     font-size: 50px;
     font-family: iceberg;
     font-weight: bold;
     text-align: center;
-    margin-top: 2%;
-    padding: 10px;
+    
+    
+}
+.bouton{
+    font-weight: bold;
+    font-family: iceberg;
+    flex: right;
+    margin: 20px;
+     display: inline-block;
+     position: absolute;
+     top:30%;
+     right: 0;
+    text-decoration: none;
+     background-color:#3498db; 
+    padding: 10px 20px; 
+    border-radius: 20px; 
+    color: #ffff;
+    font-size: 24px;
 }
 .form-group{
     display: flex;
@@ -40,21 +59,22 @@ body {
 
 
 label{
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
     font-family: iceberg;
     color: #34495e;
-    flex: 1; 
+   
 }
 input[type="text"],select {
     padding: 12px 20px;
     margin-bottom: 30px;
-    border-bottom: 4px solid #34495e;
+    border-bottom: 4px solid #3498db;
     border-top: none;
     border-left: none;
     border-right: none;
     border-radius: 20px;
     height: 50px;
+    width: 300px;
 }
 
 input[type="submit"] {
@@ -67,7 +87,7 @@ input[type="submit"] {
     padding: 12px 20px;
     font-size: 28px;
     cursor: pointer;
-    margin-bottom: 60px;
+    margin-top: 60px;
 }
 
 input[type="submit"]:hover {
