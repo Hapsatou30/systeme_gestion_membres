@@ -98,13 +98,15 @@ try {
 
             <br>
 
-            <div class="form-group">
-                <label for="sexe">Sexe :</label>
+                <<div class="form-group">
+                   <label for="sexe">Sexe :</label>
                 <select id="sexe" name="sexe">
-                    <option value="homme">M</option>
-                    <option value="femme">F</option>
+                    <option value="Masculin">M</option>
+                    <option value="Feminin">F</option>
                 </select>
-            </div><br>
+                </div>
+
+            <br>
 
             <div class="form-group">
                 <label for="situation_matrimoniale">Situation matrimoniale :</label>
