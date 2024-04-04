@@ -68,20 +68,29 @@ try {
    <h1 style="color: #3498db;">Ajouter un membre à la Commune de Patte D'oie</h1>
 </div>
 <a href="affichage.php" style="position: absolute;
-    top: 0; right: 0; margin: 20px; display: inline-block;
-   text-decoration: none; background-color: #3498db;
-   padding: 10px 20px; border-radius: 20px; color: #ffffff;
-   font-size: 20px;">Voir la liste des membres</a>
+     top: 0; right: 0; margin: 20px; display: inline-block;
+    text-decoration: none; background-color: #3498db; 
+    padding: 10px 20px; border-radius: 20px; color: #ffffff; 
+    font-size: 20px;">Voir la liste des membres</a>
+<<<<<<<<< Temporary merge branch 1
+=========
+    
+    <div class="container" style="width: 700px;">
+        <div style="text-align: center">
+            <form action="index.php" method="post">
+                <div class="form-group">
+                <label for="matricule">Matricule:</label>
+                <input type="text" id="matricule" readonly value="<?php echo $nextMatricule; ?>">
+                </div><br>
+>>>>>>>>> Temporary merge branch 2
 
-
-   <div class="container" style="width: 700px;">
-       <div style="text-align: center">
-           <form action="index.php" method="post">
-               <div class="form-group">
-               <label for="matricule">Matricule:</label>
-               <input type="text" id="matricule" readonly value="<?php echo $nextMatricule; ?>">
-               </div><br>
-
+<div class="container" style="width: 700px;">
+    <div style="text-align: center">
+        <form action="index.php" method="post">
+            <div class="form-group">
+                <label for="matricule">Matricule :</label>
+                <input type="text" id="matricule" name="matricule">
+            </div><br>
 
            <div class="form-group">
                <label for="nom">Nom :</label>
@@ -94,35 +103,65 @@ try {
                <input type="text" id="prenom" name="prenom">
            </div><br>
 
+<<<<<<<<< Temporary merge branch 1
+            <div class="form-group">
+                <label for="tranche_age">Tranche d'âge :</label>
+                <select id="tranche_age" name="tranche_age">
+                    <?php foreach ($tranche_age as $tranch): ?>
+                        <option
+                            value="<?php echo $tranch['min_age'] . '_' . $tranch['max_age']; ?>"><?php echo $tranch['min_age'] . '-' . $tranch['max_age']; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
 
-               <!-- <div class="form-group">
-                   <label for="sexe">Sexe :</label>
-                   <select id="sexe" name="sexe">
-                       <option value="Masculin">Masc</option>
-                       <option value="Feminin">Femin</option>
-                   </select>
-               </div><br> -->
-               <div class="form-group">
-   <label for="sexe">Sexe :</label>
-   <select id="sexe" name="sexe">
-       <option value="Masculin">M</option>
-       <option value="Feminin">F</option>
-   </select>
-</div>
-<br>
+            <br>
+=========
+                <div class="form-group">
+                    <label for="sexe">Sexe :</label>
+                    <select id="sexe" name="sexe">
+                        <option value="Masculin">Masc</option>
+                        <option value="Feminin">Femin</option>
+                    </select>
+                </div><br>
 
+                <div class="form-group">
+                    <label for="situation_matrimoniale">Situation matrimoniale :</label>
+                    <select id="situation_matrimoniale" name="situation_matrimoniale">
+                        <option value="Célibataire">Célibataire</option>
+                        <option value="Marié(e)">Marié(e)</option>
+                        <option value="Divorcé(e)">Divorcé(e)</option>
+                        <option value="Veuf(ve)">Veuf/Veuve</option>
+                    </select>
+                </div><br>
+>>>>>>>>> Temporary merge branch 2
 
-               <div class="form-group">
-                   <label for="situation_matrimoniale">Situation matrimoniale :</label>
-                   <select id="situation_matrimoniale" name="situation_matrimoniale">
-                       <option value="Célibataire">Célibataire</option>
-                       <option value="Marié(e)">Marié(e)</option>
-                       <option value="Divorcé(e)">Divorcé(e)</option>
-                       <option value="Veuf(ve)">Veuf/Veuve</option>
-                   </select>
-               </div><br>
-            
+            <div class="form-group">
+                <label for="sexe">Sexe :</label>
+                <select id="sexe" name="sexe">
+                    <option value="homme">M</option>
+                    <option value="femme">F</option>
+                </select>
+            </div><br>
 
+            <div class="form-group">
+                <label for="situation_matrimoniale">Situation matrimoniale :</label>
+                <select id="situation_matrimoniale" name="situation_matrimoniale">
+                    <?php foreach ($situation_matrimoniales as $matrimonial): ?>
+                        <option value="<?php echo $matrimonial; ?>"><?php echo $matrimonial; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div><br>
+
+            <div class="form-group">
+         <label for="statut">Statut :</label>
+            <select id="statut" name="statut">
+            <?php foreach ($statut as $s): ?>
+            <option value="<?php echo $s['id']; ?>"><?php echo $s['titre']; ?></option>
+            <?php endforeach; ?>
+            </select>
+            </div><br>
+
+            <br>
 
            <input type="submit" name="enregistrer" value="Enregistrer">
        </form>
