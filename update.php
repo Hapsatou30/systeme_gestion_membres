@@ -102,18 +102,18 @@ if ($stmt_membre->execute()) {
                 <div class="form-group">
                     <label for="sexe">Sexe :</label>
                     <select id="sexe" name="sexe">
-                        <option value="homme" <?php if($membre['sexe'] == 'homme') echo 'selected'; ?>>Masculin</option>
-                        <option value="femme" <?php if($membre['sexe'] == 'femme') echo 'selected'; ?>>Féminin</option>
+                        <option value="Masculin" <?php if($membre['sexe'] == 'Masculin') echo 'selected'; ?>>Masculin</option>
+                        <option value="fFeminin" <?php if($membre['sexe'] == 'Feminin') echo 'selected'; ?>>Féminin</option>
                     </select><br><br>
                 </div>
 
                 <div class="form-group">
                     <label for="situation_matrimoniale">Situation matrimoniale :</label>
                     <select id="situation_matrimoniale" name="situation_matrimoniale">
-                        <option value="celibataire" <?php if($membre['situation_matrimoniale'] == 'celibataire') echo 'selected'; ?>>Célibataire</option>
-                        <option value="marie" <?php if($membre['situation_matrimoniale'] == 'marie') echo 'selected'; ?>>Marié(e)</option>
-                        <option value="divorce" <?php if($membre['situation_matrimoniale'] == 'divorce') echo 'selected'; ?>>Divorcé(e)</option>
-                        <option value="veuf" <?php if($membre['situation_matrimoniale'] == 'veuf') echo 'selected'; ?>>Veuf/Veuve</option>
+                        <option value="Célibataire" <?php if($membre['situation_matrimoniale'] == 'Célibataire') echo 'selected'; ?>>Célibataire</option>
+                        <option value="Marié(e)" <?php if($membre['situation_matrimoniale'] == 'Marié(e)') echo 'selected'; ?>>Marié(e)</option>
+                        <option value="Divorcé(e)" <?php if($membre['situation_matrimoniale'] == 'Divorcé(e)') echo 'selected'; ?>>Divorcé(e)</option>
+                        <option value="Veuf(ve)" <?php if($membre['situation_matrimoniale'] == 'Veuf(ve)') echo 'selected'; ?>>Veuf/Veuve</option>
                     </select><br><br>
                 </div>
 
