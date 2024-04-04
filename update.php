@@ -103,7 +103,7 @@ if ($stmt_membre->execute()) {
                     <label for="sexe">Sexe :</label>
                     <select id="sexe" name="sexe">
                         <option value="Masculin" <?php if($membre['sexe'] == 'Masculin') echo 'selected'; ?>>Masculin</option>
-                        <option value="fFeminin" <?php if($membre['sexe'] == 'Feminin') echo 'selected'; ?>>Féminin</option>
+                        <option value="Feminin" <?php if($membre['sexe'] == 'Feminin') echo 'selected'; ?>>Féminin</option>
                     </select><br><br>
                 </div>
 

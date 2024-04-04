@@ -21,7 +21,9 @@
       }
       function genererMatricule($connexion) {
         // Requête pour obtenir le dernier matricule enregistré
-        $sql = "SELECT MAX(SUBSTRING(matricule, 5)) AS dernier_numero FROM membre";
+        // Requête pour obtenir le dernier matricule enregistré
+        $sql = "SELECT MAX(CAST(SUBSTRING(matricule, 5) AS UNSIGNED)) AS dernier_numero FROM membre";
+
         $stmt = $connexion->prepare($sql);
         $stmt->execute();
         $dernier_numero = $stmt->fetchColumn();
