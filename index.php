@@ -28,13 +28,13 @@ try {
         $statut_emploi = isset($_POST['statut_emploi']) ? $_POST['statut_emploi'] : '';
 
         // Vérifier si le nom est vide ou contient des chiffres
-        if (empty($nom) || preg_match('/[0-9]/', $nom)) {
+        if (empty($nom) || preg_match('/^[a-zA-Z\s]+$/', $nom)) {
             echo "Erreur : Le nom est vide ou contient des chiffres.";
             exit(); // Arrêter l'exécution du script
         }
 
         // Vérifier si le prénom est vide ou contient des chiffres
-        if (empty($prenom) || preg_match('/[0-9]/', $prenom)) {
+        if (empty($prenom) || preg_match('/^[a-zA-Z\s]+$/', $prenom)) {
             echo "Erreur : Le prénom est vide ou contient des chiffres.";
             exit(); // Arrêter l'exécution du script
         }
